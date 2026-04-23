@@ -119,3 +119,35 @@ plt.xlabel("Pollutants")
 plt.ylabel("Values")
 plt.xticks(rotation=45)
 plt.show()
+
+
+
+# Linear Regression
+
+X = df[['latitude']]
+y = df[['pollutant_avg']]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict
+#checkTarget = pd.DataFrame({'bmi':[25]})
+#result = model.predict(checkTarget)
+#print("Predicted Target for bmi 25: ", result)
+
+
+
+plt.figure()
+plt.scatter(X, y, color="blue")
+plt.plot(X, model.predict(X), color='red', linewidth=3)
+plt.xlabel('latitude')
+plt.ylabel('Pollution Avg')
+plt.title('Linear Regression Fit')
+plt.show()
+
+
+
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print("MSE:", mse)
