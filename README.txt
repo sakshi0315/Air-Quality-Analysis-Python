@@ -1,1 +1,1 @@
-Air Quality Analysis using Python
+This project analyzes air pollution using Python and shows trends.
